@@ -5,8 +5,8 @@
 export const environment = {
   //baseApi:"https://fakestoreapi.com/",
   // baseApi:"http://aklney.onrender.com/",
-  baseApi:"https://akelny20230625090658.azurewebsites.net/api/",
-  ImgUrl : "https://akelny20230625090658.azurewebsites.net/",
+  baseApi:"https://akelny20230625093658.azurewebsites.net/api/",
+  ImgUrl : "https://akelny20230625093658.azurewebsites.net/",
 
 
   production: false
