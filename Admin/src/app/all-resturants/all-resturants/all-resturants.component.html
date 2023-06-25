@@ -1,0 +1,200 @@
+
+<div class="container">
+  <div class="header">
+    <h1 class="title">All Restaurants</h1>
+
+    <input class="search" (input)="filterArr()" [(ngModel)]="search_text" type="search" placeholder="search restaurants...!" ><i class="fa fa-search"></i>
+  </div>
+
+  <div data-aos="fade-up" class="row" style="row-gap: 3vh;">
+
+    <div *ngIf="loading else esleblock" style="height: 60vh;" class="d-flex justify-content-center align-items-center">
+      <mat-spinner></mat-spinner>
+    </div>
+    <ng-template #esleblock>
+      <div data-aos="fade-up" *ngFor="let item of payload;" class="col-lg-3 col-md-4 col-sm-12">
+        <div class="card" routerLink="/products/{{item.id}}">
+          <img src="{{ImgURL+item.image}}" width="350px" style="aspect-ratio: 1/1;" class="card-img-top" alt="..." >
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">{{item.spatiality}}</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+
+  </div>
+</div>
+
+
+<!-- <div  *ngFor="let item of payload;" class="card-group" >
+  <div class="card" routerLink="/products">
+        <img src="{{item.image}}" class="card-img-top" alt="..." >
+    <div class="card-body">
+      <h5 class="card-title">{{item.title}}</h5>
+      <p class="card-text">{{item.spatiality}}</p>
+    </div>
+  </div> -->
+  <!-- <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/logo_16637775057853948762.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/Roti_King_Sweet_Bake_636873919192916053.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/logo_(28)_(1)_637495944625762140.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+  </div>
+  <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/The_Grilll_Shack_Logo_636730230875980283.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div> -->
+<!-- </div> -->
+<!-- <div class="card-group" >
+  <div class="card">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/Logo_636575599231679441.jpg?width=115&height=104" class="card-img-top" alt="..." >
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/Logo_1638018618343603529.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/khayaef_logo_636820945829109836.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card"routerLink="/products" >
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/Pizza_Ibiza_Logo_636294157738924432.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+  </div>
+  <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/logo_1637855335444562772.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+</div>
+<div class="card-group" >
+  <div class="card"routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/New_Project(6)_(1)_6_637795739003294286.png?width=115&height=104" class="card-img-top" alt="..." >
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card"routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/logo_16637775057853948762.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/Roti_King_Sweet_Bake_636873919192916053.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card"routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/logo_(28)_(1)_637495944625762140.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+  </div>
+  <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/The_Grilll_Shack_Logo_636730230875980283.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+</div>
+<div class="card-group" >
+  <div class="card"routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/New_Project(6)_(1)_6_637795739003294286.png?width=115&height=104" class="card-img-top" alt="..." >
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/logo_16637775057853948762.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card"routerLink="/products" >
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/Roti_King_Sweet_Bake_636873919192916053.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+  <div class="card" routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/logo_(28)_(1)_637495944625762140.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+  </div>
+  <div class="card"routerLink="/products">
+    <img src="https://images.deliveryhero.io/image/talabat/restaurants/The_Grilll_Shack_Logo_636730230875980283.jpg?width=115&height=104" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting t</p>
+    </div>
+
+  </div>
+</div> -->
+
+<ul class="prev">
+  <li routerLink="/home"> <i class="fa fa-caret-left"></i>Back</li>
+</ul>
+
+
+

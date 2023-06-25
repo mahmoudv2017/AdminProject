@@ -1,0 +1,163 @@
+<!-- <div class="box"> -->
+<!-- <div class="myclass">
+    <app-select
+      [data]="categories"
+      [title]="'Categories'"
+      (selectedValue)="filterCategory($event)"
+    ></app-select>
+  </div> -->
+<!-- *ngIf="!loading" -->
+
+
+<div class="container">
+
+  <app-select
+  [data]="categories"
+  [title]="'Our Products'"
+  (selectedValue)="filterCategory($event)"
+></app-select>
+  <button (click)="clearModal()" data-toggle="modal" data-target="#exampleCreateCenter" class="btn btn-success">Add Meal</button>
+
+  <div class="row" style="min-height: 100vh;">
+    <div class="col-md-3" *ngFor="let item of products">
+      <div class="card"  data-aos="fade-up" >
+        <img class="card-img-top"  style="aspect-ratio: 1/1; width: 100%; object-fit: cover;"  src="{{ Imgurl+ item.image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+
+          <div class="d-flex justify-content-around">
+            <a  (click)="pushme(item)" data-toggle="modal" data-target="#exampleModalCenter"  class="btn btn-warning">Edit</a>
+            <a  (click)="DeleteMeal(item)"  class="btn btn-danger">Delete</a>
+          </div>
+
+          <div class="price">
+            <p>
+              <span class="money">{{ item.price }} L.E</span
+              ><span class="old-price">$80.00</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ul class="prev">
+  <li routerLink="/all-resturants"><i class="fa fa-caret-left"></i>Back</li>
+</ul>
+
+
+<!-- Modal -->
+<div *ngIf="selected_product" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  [formGroup]="form" >
+          <div class="row">
+              <div class="col-md-12 col-sm-12">
+                  <label for="">Title</label>
+                  <input type="text" formControlName="name" class="form-control"  placeholder="title">
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <label for="image">Description</label>
+                <textarea class="form-control"  formControlName="description" placeholder="type here .. "></textarea>
+            </div>
+              <div class="col-md-12 col-sm-12">
+                <label for="">price</label>
+                <input type="number" formControlName="price"  class="form-control" placeholder="speciality">
+            </div>
+
+
+               <div class="col-md-4 col-sm-12">
+                  <label for="image">Image</label>
+                  <img width="200px"  #img alt="">
+                  <input type="file" formControlName="image" class="form-control" (change)="getImagePath($event)" >
+              </div>
+
+              <select  [value]="selected_product.SectionName" formControlName="SectionName">
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+
+                <option value="Dinner">Dinner</option>
+
+              </select>
+
+          </div>
+          <!-- <div class="d-flex justify-content-end mt-3">
+              <button class="btn btn-success"  (click)="addProduct()">Add Product</button>
+
+          </div> -->
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateMeal(img)" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleCreateCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  [formGroup]="form" >
+          <div class="row">
+              <div class="col-md-12 col-sm-12">
+                  <label for="">Title</label>
+                  <input type="text" formControlName="name" class="form-control"  placeholder="title">
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <label for="image">Description</label>
+                <textarea class="form-control"  formControlName="description" placeholder="type here .. "></textarea>
+            </div>
+              <div class="col-md-12 col-sm-12">
+                <label for="">price</label>
+                <input type="number" formControlName="price"  class="form-control" placeholder="price">
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+                <label for="image">Image</label>
+                <img width="200px" src="{{base64}}" id="creator_img" #img alt="">
+                <input type="file" formControlName="image" class="form-control" (change)="getImagePath($event)" >
+            </div>
+
+            <select  formControlName="SectionName">
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+
+              <option value="Dinner">Dinner</option>
+
+            </select>
+
+          </div>
+          <!-- <div class="d-flex justify-content-end mt-3">
+              <button class="btn btn-success"  (click)="addProduct()">Add Product</button>
+
+          </div> -->
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="CreateMeal(img)" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="text-center w-100" *ngIf="loading">
+    <app-spinner></app-spinner>
+  </div> -->
+<!-- </div> -->

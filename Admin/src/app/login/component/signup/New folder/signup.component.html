@@ -1,0 +1,68 @@
+<div class="container">
+
+
+      <div class="card">
+
+        <div class="text-center">
+          <h1>sign up</h1>
+          <strong>sign up anytime!</strong><hr>
+        </div>
+        <form [formGroup]="signupform" (ngSubmit)="signup()">
+          <div class="mb-3">
+
+            <!-- <input type="text"formControlName="username" class="form-control" placeholder="Enter your username" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+            <mat-form-field style="width: 100%;" appearance="fill">
+              <mat-label>username</mat-label>
+              <input formControlName="username"  matInput>
+            </mat-form-field>
+            <mat-error *ngIf="signupform.get('username')?.invalid && signupform.get('username')?.touched" class="text-danger">username is Required</mat-error>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">First Name</label>
+            <input type="text" formControlName="firstName" placeholder="Enter your first name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small *ngIf="signupform.get('firstName')?.invalid && signupform.get('firstName')?.touched " class="text-danger">firstName Is Required</small>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Last Name</label>
+            <input type="text" formControlName="lastName" placeholder="Enter your first name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small *ngIf="signupform.get('lastName')?.invalid && signupform.get('lastName')?.touched " class="text-danger">lastName Is Required</small>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" formControlName="email" placeholder="Enter your email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small *ngIf="signupform.get('email')?.invalid && signupform.get('email')?.touched " class="text-danger">Email Is Required</small>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Date Of Birth</label>
+            <input type="date" formControlName="DOB" class="form-control" placeholder="Enter your date of birth" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small *ngIf="signupform.get('DOB')?.invalid && signupform.get('DOB')?.touched" class="text-danger">Date of Birth is required</small>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Gender</label>
+            <input type="radio" formControlName="gender" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="radio" formControlName="gender" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp">
+
+            <small *ngIf="signupform.get('DOB')?.invalid && signupform.get('DOB')?.touched" class="text-danger">Date of Birth is required</small>
+          </div>
+          <!-- <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Gender</label>
+            <input type="radio" formControlName="gender" class="form-control" aria-describedby="emailHelp">
+            <input type="radio" formControlName="gender" class="form-control"  aria-describedby="emailHelp">
+
+            <small *ngIf="signupform.get('gender')?.invalid && signupform.get('gender')?.touched" class="text-danger">gender is required</small>
+          </div> -->
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" formControlName="password" class="form-control" placeholder="Enter your password" id="exampleInputPassword1">
+            <small *ngIf="signupform.get('password')?.invalid && signupform.get('password').touched" class="text-danger">Password is Required</small>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="signupform.invalid">Sign up</button>
+        </form>
+        <a style="color: blue; margin-top: 10px;" routerLink="/login">Already Registed? click to Login</a>
+
+      </div>
+
+
+
+</div>

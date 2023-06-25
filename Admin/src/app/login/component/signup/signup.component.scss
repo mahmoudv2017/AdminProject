@@ -1,0 +1,33 @@
+.card{
+  width: 26vw;
+  margin-top: 10%;
+  border-radius: 25px;
+  /* margin: auto; */
+  /* top: 30vh; */
+  /* margin-bottom: 200px; */
+  /* left: 50%; */
+  /* position: relative; */
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding: 31px 40px;
+  border: 1px solid black;
+  /* transform: translate(-50%, -50%); */
+  background: black;
+  color: #fff;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.full-width{
+  width: 100%;
+}
+
+@media all and (max-width:800px) {
+  .card{
+    width: 100% !important;
+  }
+}

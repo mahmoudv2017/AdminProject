@@ -1,0 +1,161 @@
+
+
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" routerLink="home" >Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul *ngIf="!auth_flag; else elseblock" class="navbar-nav ms-auto">
+          <li>
+            <a routerLink="login" class="nav-link">
+              <button class="btn btn-secondary">Login</button>
+            </a>
+          </li>
+          <li>
+            <a routerLink="signup" class="nav-link">
+              <button class="btn btn-secondary">Register</button>
+            </a>
+          </li>
+
+        </ul>
+
+        <ng-template #elseblock>
+          <ul *ngIf="current_user; else elseblock" class="navbar-nav ms-auto">
+            <li>
+              <a routerLink="home" class="nav-link">
+                Home
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" routerLink="/resturant-crud">Restaurants</a>
+                <a class="dropdown-item" routerLink="/all-resturants">Meals</a>
+                <a class="dropdown-item" routerLink="/cart-controller">Orders</a>
+                <a class="dropdown-item" routerLink="/users">Users</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" (click)="sh.LogMeOut()">Logout</a>
+              </div>
+            </li>
+            <li>
+              <a *ngIf=current_user.userName class="nav-link user_img">
+
+                <button class="btn btn-danger"  data-toggle="modal" data-target="#exampleModal"  data-whatever="@getbootstrap">{{current_user.userName}} </button>
+
+              </a>
+            </li>
+
+
+          </ul>
+        </ng-template>
+      </div>
+    </div>
+
+  </nav>
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="language">
+          <ul>
+
+
+            <li (click)="drop('currency')">
+             Admin<i class="fa fa-caret-down"></i>
+              <div class="dropdown" *ngIf="id === 'currency'">
+                <ul>
+                  <li routerLink="/home">Home</li>
+                  <li routerLink="/resturant-crud">Manage Resturants</li>
+                  <li routerLink="/all-resturants">All Resturants & Meals</li>
+                  <li routerLink="/users">Users</li>
+                  <li routerLink="/cart-controller">Manage Orders</li>
+
+                  <li  style="cursor: pointer;" > <a   data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"> Edit Profile</a></li>
+                  <li (click)="sh.LogMeOut()"  >Log Out</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8" style="text-align: right">
+        <div class="social-menu">
+          <ul>
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <button routerLink="/signup" class="login" routerLinkActive="active"> Register </button>
+              <button routerLink="/login" class="login" routerLinkActive="active"> Login </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</header>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">username:</label>
+            <input type="text" formControlName="userName" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">First Name</label>
+            <input type="text" formControlName="firstName" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">ProfileImg</label>
+            <input type="file" #profileImg class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">address</label>
+            <input type="text" formControlName="address" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">email</label>
+            <input type="text" formControlName="email" class="form-control" id="recipient-name">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="UpdateUser(profileImg)" data-dismiss="modal" >Send message</button>
+      </div>
+    </div>
+  </div>
+</div>

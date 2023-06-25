@@ -1,0 +1,85 @@
+{
+  "products": [
+    {
+      "id": 8,
+      "productName": "mmmm",
+      "productTitle": "mmmm",
+      "oldPrice": "1700le",
+      "newPrice": "120le",
+      "description": "mnnnnn",
+      "img": ""
+    },
+    {
+      "id": 9,
+      "productName": "mmm",
+      "productTitle": "G@gmail.com",
+      "oldPrice": "G@gmail.com",
+      "newPrice": "G@gmail.com",
+      "description": "G@gmail.com",
+      "img": ""
+    },
+    {
+      "id": 17,
+      "productName": "usermmm",
+      "productTitle": "usermm",
+      "oldPrice": "120",
+      "newPrice": "15",
+      "description": "mmmmmmmmmm",
+      "img": ""
+    },
+    {
+      "id": 18,
+      "productName": "mmmm",
+      "productTitle": "usermm",
+      "oldPrice": "usermmm@gmail.com",
+      "newPrice": "150",
+      "description": "120lll",
+      "img": ""
+    }
+  ],
+  "signup": [
+    {
+      "name": "A",
+      "email": "mona@gmail.com",
+      "mobile": 123,
+      "password": "12334",
+      "id": 1
+    },
+    {
+      "name": "mona",
+      "email": "monasallam400@gmail.com",
+      "mobile": 123,
+      "password": "123",
+      "id": 2
+    },
+    {
+      "name": "A",
+      "email": "a@gmail.com",
+      "mobile": 123,
+      "password": "123",
+      "id": 3
+    },
+    {
+      "name": "User",
+      "email": "user@gmail.com",
+      "mobile": 123456,
+      "password": "123",
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "email": "user@gmail.com",
+      "password": "123",
+      "id": 6
+    },
+    {
+      "name": "mona",
+      "email": "usermmm@gmail.com",
+      "mobile": 10222,
+      "password": "123",
+      "id": 7
+    }
+  ]
+}

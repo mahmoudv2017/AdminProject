@@ -1,0 +1,96 @@
+
+.header{
+  text-align: right;
+  position: relative;
+  margin-top: 15vh;
+
+}
+.title{
+  background-color: #eee;
+  padding: 6px;
+  font-weight: 400;
+  text-align: center;
+  font-size: x-large;
+}
+.card-group{
+  height: 200px;
+  margin-bottom: 10px;
+  margin: 0px 150px  150px  150px;
+  padding: 6px;
+  margin-bottom: 8rem;
+
+
+}
+.search{
+  padding: 3px;
+  margin-top: 15px;
+  text-align: left;
+  border-radius: 2px;
+  border: 3px solid #eee;
+  transition: 0.3 all ease;
+}
+input[type="search"]{
+  outline: none;
+}
+
+.header i{
+color: #eee;
+  right: 15px;
+  position: absolute;
+  bottom: 7px;
+  font-size: 21px;
+
+}
+.card{
+  margin-right:20px;
+  border: 1px solid rgba(0,0,0,.125);
+
+}
+.card-group>.card:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: 1px solid rgba(0,0,0,.125);
+}
+.card:last-child{
+  margin-right: 0;
+
+
+}
+.card.card-body{
+  height: 200px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,.125);
+
+}
+
+.card:hover{
+  box-shadow: 0 0 13px 1px gray;
+}
+.card img{
+  padding: 20px;
+}
+.prev{
+  left: 150px;
+  position: absolute;
+  background: #ff4000;
+  color: #FFF;
+  width: 150px;
+  height: 40px;
+  border-radius: 22px;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  position: fixed;
+  bottom: 12px;
+  left: 25px;
+  z-index: 7;
+
+}
+ul  li{
+  list-style-type: none;
+}
+ .prev:hover{
+  background: #eee;
+  color: #ff4000;
+  border: 1px solid #ff4000;
+}

@@ -1,0 +1,141 @@
+<br>
+<br>
+<div class="box mt-5 cartBox">
+<br>
+  <button class="btn btn-success" (click)="add()"  data-bs-toggle="modal" data-bs-target="#addviewCart">Add Resturant</button>
+
+  <div *ngIf="loading else elseblock" style="height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;">
+    <mat-spinner ></mat-spinner>
+  </div>
+  <ng-template #elseblock>
+    <table data-aos="fade-up" class="table table-striped">
+      <thead>
+          <tr class="text-center">
+              <th>image</th>
+              <th>Name</th>
+              <th>Speciality</th>
+
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of products; let i = index">
+              <td><img  style="border-radius: 25px; width: 10rem; aspect-ratio: 1/1;" src="{{ImgURL+item.image}}" alt=""></td>
+              <td style="font-size: 1.8rem;">{{item.title}}</td>
+              <td>{{item['speciality']}}</td>
+
+              <td><button class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#updateviewCart" (click)="update(item)">Update</button>
+                <button class="btn btn-danger" style="margin-left: 2vw;"  (click)="deleteProduct(item)"  >Delete</button>
+              </td>
+
+          </tr>
+      </tbody>
+  </table>
+  </ng-template>
+
+</div>
+
+<!-- Add Model -->
+<div class="modal fade " id="addviewCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 900px!important">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Resturant </h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-bs-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <form  [formGroup]="form" >
+              <div class="row">
+                  <div class="col-md-12 col-lg-12 col-sm-12">
+                      <label for="">Title</label>
+                      <input type="text" formControlName="title" class="form-control" value="ay7aga title" placeholder="title">
+                  </div>
+                  <div class="col-md-12 col-lg-12 col-sm-12">
+                    <label for="">speciality</label>
+                    <input type="text" formControlName="speciality"  class="form-control" placeholder="speciality">
+                </div>
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                  <label for="">rating</label>
+                  <input type="number" formControlName="rating" class="form-control" placeholder="rating">
+              </div>
+
+                  <div class="col-md-12 col-lg-12 col-sm-12">
+                      <label for="image">Image</label>
+                      <!-- <img src="{{base64}}" style="    width: 200px; aspect-ratio: 1/1;" alt=""> -->
+                      <input type="file" formControlName="image" class="form-control" (change)="getImagePath($event)" >
+                  </div>
+                  <div class="col-md-12 col-lg-12 col-sm-12">
+                      <label for="image">Description</label>
+                      <textarea value="sakjdl;akshdlk;ajshdklajshdkasjlhdaskjdhaskjd" class="form-control"  formControlName="description" placeholder="type here .. "></textarea>
+                  </div>
+              </div>
+              <div class="d-flex justify-content-end mt-3">
+                  <button class="btn btn-success"  (click)="addProduct()" data-bs-dismiss="modal">Add Product</button>
+
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Add Model -->
+
+
+<!-- Update Model -->
+<div class="modal fade " id="updateviewCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 900px!important">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Resturant </h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-bs-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <form [formGroup]="form" >
+              <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                      <label for="">Title</label>
+                      <input type="text" formControlName="title" class="form-control" placeholder="title">
+                  </div>
+
+                  <div class="col-md-12 col-sm-12">
+                    <label for="">speciality</label>
+                    <input type="text" formControlName="speciality" class="form-control" placeholder="speciality">
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <label for="">rating</label>
+                  <input type="number" formControlName="rating" class="form-control" placeholder="rating">
+              </div>
+
+
+                  <div class="col-md-12 col-sm-12">
+                      <label for="image">Image</label>
+                      <img width="200px" src="{{base64}}" alt="">
+                      <input type="file" formControlName="image" class="form-control" (change)="getImagePath($event)" >
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                      <label for="image">Description</label>
+                      <textarea  class="form-control"  formControlName="description" placeholder="type here .. "></textarea>
+                  </div>
+              </div>
+              <div class="d-flex justify-content-end mt-3">
+                  <button class="btn btn-success"  class="close" aria-bs-label="Close"  (click)="UpdateProduct()" data-bs-dismiss="modal">Save</button>
+
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+<ul class="prev">
+  <li routerLink="/all-resturants"> <i class="fa fa-caret-left"></i>Back</li>
+</ul>
+<!-- End Update Model -->

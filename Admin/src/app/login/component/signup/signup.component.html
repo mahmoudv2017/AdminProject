@@ -1,0 +1,179 @@
+<div class="container">
+
+
+      <div class="card" data-aos="fade-up" >
+
+        <div class="text-center">
+          <h1>sign up</h1>
+          <strong>sign up anytime!</strong><hr>
+        </div>
+        <form [formGroup]="signupform" >
+          <div class="mb-3">
+
+            <!-- <input type="text"formControlName="username" class="form-control" placeholder="Enter your username" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
+            <mat-form-field style="width: 100%;" appearance="fill">
+              <mat-label>username</mat-label>
+              <input formControlName="username"  matInput>
+              <mat-error *ngIf="signupform.get('username')?.invalid && signupform.get('username')?.touched" >username is Required</mat-error>
+
+            </mat-form-field>
+          </div>
+          <div class="mb-3">
+            <mat-form-field style="width: 100%;" appearance="fill">
+              <mat-label>first name</mat-label>
+              <input formControlName="firstName"  matInput>
+              <mat-error *ngIf="signupform.get('firstName')?.invalid && signupform.get('firstName')?.touched">First Name is Required</mat-error>
+
+            </mat-form-field>
+          </div>
+          <div class="mb-3">
+            <mat-form-field style="width: 100%;" appearance="fill">
+              <mat-label>last name</mat-label>
+              <input formControlName="lastName"  matInput>
+              <mat-error *ngIf="signupform.get('lastName')?.invalid && signupform.get('lastName')?.touched">Last Name is Required</mat-error>
+
+            </mat-form-field>
+          </div>
+          <div class="mb-3">
+            <!-- <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" formControlName="email" placeholder="Enter your email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small *ngIf="signupform.get('email')?.invalid && signupform.get('email')?.touched " class="text-danger">Email Is Required</small> -->
+
+            <mat-form-field style="width: 100%;">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput  formControlName="email"/>
+              <mat-error *ngIf="signupform.get('email')?.invalid && signupform.get('email')?.touched ">
+                Valid Email is <strong>required</strong>
+              </mat-error>
+
+            </mat-form-field>
+
+            <input type="file" #profileImg>
+
+
+          </div>
+          <div class="mb-3">
+            <!-- <label for="exampleInputEmail1" class="form-label">Date Of Birth</label>
+            <input type="date" formControlName="DOB" class="form-control" placeholder="Enter your date of birth" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small *ngIf="signupform.get('DOB')?.invalid && signupform.get('DOB')?.touched" class="text-danger">Date of Birth is required</small> -->
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Choose a date</mat-label>
+              <input formControlName="DOB" matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+          </div>
+          <div class="mb-3 text-center ">
+            <!-- <label for="exampleInputEmail1" class="form-label">Gender</label>
+            <input type="radio" formControlName="gender" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="radio" formControlName="gender" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp">
+
+            <small *ngIf="signupform.get('DOB')?.invalid && signupform.get('DOB')?.touched" class="text-danger">Date of Birth is required</small> -->
+
+
+
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option value="male">
+                  Male
+                </mat-option>
+                <mat-option value="female">
+                  Female
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <small *ngIf="signupform.get('gender')?.invalid && signupform.get('gender')?.touched">Gender is  <strong>required</strong></small>
+
+
+
+
+          </div>
+          <!-- <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Gender</label>
+            <input type="radio" formControlName="gender" class="form-control" aria-describedby="emailHelp">
+            <input type="radio" formControlName="gender" class="form-control"  aria-describedby="emailHelp">
+
+            <small *ngIf="signupform.get('gender')?.invalid && signupform.get('gender')?.touched" class="text-danger">gender is required</small>
+          </div> -->
+          <div class="mb-3">
+            <!-- <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" formControlName="password" class="form-control" placeholder="Enter your password" id="exampleInputPassword1">
+            <small *ngIf="signupform.get('password')?.invalid && signupform.get('password').touched" class="text-danger">Password is Required</small> -->
+
+            <div class="form-group">
+            <!-- <label for="password">Password</label>
+                <input
+                    formControlName="password"
+                    id="password"
+                    type="password"
+                    class="form-control">
+                <div *ngIf="signupform.get('password').touched && signupform.get('password').invalid" class="alert alert-danger">
+                    <div >Password is required.</div>
+                </div> -->
+
+
+
+
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label>Enter your password</mat-label>
+                  <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                  <button style="border: none;" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="signupform.get('password').touched && signupform.get('password').invalid" >
+                    Password is required.
+                 </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+                <!-- <label for="confirmpassword">Confirm Password</label>
+                <input
+                    formControlName="confirmpassword"
+                    id="confirmpassword"
+                    type="password"
+                    class="form-control">
+                <div *ngIf="signupform.get('confirmpassword').touched && signupform.get('confirmpassword').invalid" class="alert alert-danger">
+                    <div *ngIf="signupform.get('confirmpassword').errors['required']">Password is required.</div>
+                    <div *ngIf="signupform.get('confirmpassword').errors['confirmedValidator']">Password and Confirm Password must be match.</div>
+                </div> -->
+
+                <!-- <mat-form-field style="width: 100%;">
+                  <mat-label>confirmed password</mat-label>
+                  <input  matInput  formControlName="confirmpassword"/>
+                  <mat-error *ngIf="signupform.get('confirmpassword').touched && signupform.get('confirmpassword').invalid" >
+                   Password is required.
+                </mat-error>
+                  <!-- <mat-error *ngIf="signupform.get('password')?.invalid && signupform.get('password')?.touched ">
+                    Valid Email is <strong>required</strong>
+                  </mat-error> -->
+
+
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label>Confirm your password</mat-label>
+                  <input formControlName="confirmpassword" matInput [type]="hide ? 'password' : 'text'">
+                  <button  style="border: none;" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="signupform.get('confirmpassword').touched && signupform.get('confirmpassword').invalid" >
+                    Password is required.
+                 </mat-error>
+                </mat-form-field>
+
+            </div>
+          </div>
+         <mat-error *ngIf="signupform.get('confirmpassword').touched && signupform.errors" > Passwords do not <strong>match</strong> </mat-error>
+          <button (click)="signup(profileImg)" type="submit" class="btn btn-primary" [disabled]="signupform.invalid">Sign up</button>
+        </form>
+        <a style="color: blue; margin-top: 10px;" routerLink="/login">Already Registed? click to Login</a>
+
+      </div>
+
+
+
+</div>

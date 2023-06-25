@@ -1,0 +1,23 @@
+.card{
+  width: 550px;
+  //height: 440px;
+  top: 300px;
+margin-bottom: 200px;
+  left: 50%;
+  position: relative;
+  box-sizing: border-box;
+  padding: 31px 40px;
+  border: 1px solid black;
+
+  transform: translate(-50%,-50%);
+  background:black;
+  color: #fff;
+}
+
+
+
+@media all and (max-width:1280px) {
+  .card{
+    width: 100% !important;
+  }
+}
