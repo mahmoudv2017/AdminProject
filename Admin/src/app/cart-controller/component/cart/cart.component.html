@@ -20,10 +20,14 @@
                 </div>
         </div>
     </form> -->
-
+    <div *ngIf="carts.length > 0; else Nosubs">
     <div *ngIf="loading else loadingblokc" style="height: 100vh;" class=" d-flex justify-content-center align-items-center">
       <mat-spinner></mat-spinner>
     </div>
+
+
+
+   
     <ng-template #loadingblokc>
       <div  >
         <table data-aos="fade-up"  class="table table-striped">
@@ -72,7 +76,11 @@
       </div>
 
     </ng-template>
+  </div>
 
+  <ng-template #Nosubs>
+    <h1  class="text-center" >No SUbscriptions</h1>
+  </ng-template>
 
   </div>
 
