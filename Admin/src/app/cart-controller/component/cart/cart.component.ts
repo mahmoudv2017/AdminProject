@@ -49,7 +49,8 @@ export class CartComponent implements OnInit{
    deleteCart(id:number) {
     this.service.deleteCart(id).subscribe( async res => {
       this.carts = this.carts.filter(cart => cart._id != id)
-      await swal.fire("success",`you delete all orders from ${res['restaurantName']}` , 'success')
+      await swal.fire("success",`you delete all orders ` , 'success')
+      location.reload()
 
     })
   }
