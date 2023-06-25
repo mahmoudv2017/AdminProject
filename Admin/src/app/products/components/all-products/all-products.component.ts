@@ -7,6 +7,7 @@ import sweelalert from 'sweetalert2'
 import { ProductsService } from '../../services/products.service';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-products',
@@ -32,7 +33,7 @@ export class AllProductsComponent implements OnInit {
     this.restID = activeRoute.snapshot.params["id"]
     this.form = build.group({
       name:['',Validators.required],
-      price:[null,[]],
+      price:[null,[Validators.min(10)]],
       description:['',[]],
 
       image:['',[]],
@@ -77,7 +78,7 @@ export class AllProductsComponent implements OnInit {
     document.querySelector("#creator_img")['src']="";
 
   }
-  updateMeal(img){
+  async updateMeal(img){
     let all_data;
 
     let form_payload = new FormData();
@@ -85,6 +86,11 @@ export class AllProductsComponent implements OnInit {
 
       delete this.selected_product.image;
 
+    }
+
+    if(!this.form.valid){
+      await sweelalert.fire("Failed" , `invalid data` , 'error')
+      return
     }
     all_data = { ...this.selected_product , restaurantId: this.selected_product.restaurant.id , sectionId: this.sections[this.form.value['SectionName']] , image:this.file  , ...this.Objectfilter(this.form.value) }
      console.log(all_data)
